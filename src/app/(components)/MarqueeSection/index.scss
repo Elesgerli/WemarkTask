@@ -1,0 +1,120 @@
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: 80px 0;
+
+    &__row {
+        width: 100%;
+        overflow: hidden;
+        border-top: 1px solid #10101580;
+        padding: 40px;
+
+        &:last-child {
+            border-bottom: 1px solid #10101580;
+        }
+    }
+
+    &__track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        will-change: transform;
+
+        &--left {
+            animation: marqueeLeft 25s linear infinite;
+        }
+
+        &--right {
+            animation: marqueeRight 25s linear infinite;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+
+        flex-shrink: 0;
+        padding: 15px 32px;
+
+        color: #14141A;
+        font-size: 56px;
+        font-weight: 500;
+        line-height: 76px;
+        white-space: nowrap;
+        text-transform: uppercase;
+    }
+
+    &__star {
+        color: #FF3C2A;
+        font-size: 60px;
+        font-weight: 400;
+        line-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+@keyframes marqueeLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marqueeRight {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .marquee {
+        padding: 65px 0;
+
+    }
+}
+
+
+@media (max-width: 768px) {
+    .marquee {
+        padding: 45px 0;
+
+
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .marquee {
+        padding: 35px 0;
+
+    }
+}
+
+@media (max-width: 360px) {
+    .marquee {
+        padding: 28px 0;
+
+    
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation-play-state: paused;
+    }
+}

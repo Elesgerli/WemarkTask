@@ -1,0 +1,144 @@
+
+/* TT Hoves */
+
+@font-face {
+    font-family: "TT Hoves";
+    src: url("/fonts/TT-HOVES/TT Hoves Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "TT Hoves";
+    src: url("/fonts/TT-HOVES/TT Hoves Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+/* TT Firs Neue */
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/public/fonts/TT-Firs-Neue/TT Firs Neue Trial Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/public/fonts/TT-Firs-Neue/TT Firs Neue Trial Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    word-wrap: break-word;
+    font-family: "TT Hoves", sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+
+    @media (max-width:992px) {
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+
+body {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button,
+a,
+.link {
+    transition: all 0.2s ease;
+}
+
+
+$container-widths: (
+    xxxl: 1300px,
+);
+
+@each $name, $w in $container-widths {
+    @media (min-width: $w) {
+        .container {
+            max-width: $w !important;
+        }
+    }
+}
+
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 0 16px;
+
+    @media (max-width:1024px) {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: 0 !important;
+        padding-inline: 16px !important;
+    }
+}
+
+
+
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.row-reverse {
+    flex-direction: row-reverse !important;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+@mixin generate-cols($prefix: '', $breakpoint: null) {
+    @for $i from 1 through 12 {
+        $width: calc(100% / 12 * $i);
+
+        .#{$prefix}#{$i} {
+            width: #{$width};
+            padding: 16px;
+        }
+    }
+}
+
+@include generate-cols('col-');
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+    @include generate-cols('col-mdd-');
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    @include generate-cols('col-md-');
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px) {
+    @include generate-cols('col-sm-');
+}
+
+@media screen and (max-width: 576px) {
+    @include generate-cols('col-xs-');
+}
